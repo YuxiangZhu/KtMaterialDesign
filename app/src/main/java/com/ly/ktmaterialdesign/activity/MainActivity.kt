@@ -1,13 +1,17 @@
 package com.ly.ktmaterialdesign.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import com.google.android.material.tabs.TabItem
-import com.google.android.material.tabs.TabLayout
+import androidx.viewpager.widget.ViewPager
+import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.LogUtils
+import com.google.android.material.navigation.NavigationView
 import com.ly.ktmaterialdesign.R
 import com.ly.ktmaterialdesign.adapter.FragmentAdapter
 import com.ly.ktmaterialdesign.base.BaseActivity
@@ -47,7 +51,24 @@ class MainActivity : BaseActivity() {
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
+        binding.navView.setNavigationItemSelectedListener {
 
+            when(it.itemId){
+                R.id.nav_recycler_and_swipe_refresh ->{
+
+
+                    ActivityUtils.startActivity(RecyclerViewActivity::class.java)
+
+                }
+
+            }
+
+            true
+        }
+
+        /**
+         * 初始化首页tab
+         */
         val titles: MutableList<String> = ArrayList()
         titles.add(getString(R.string.tab_title_main_1))
         titles.add(getString(R.string.tab_title_main_2))
@@ -71,9 +92,65 @@ class MainActivity : BaseActivity() {
         binding.appBar.viewPagerMain.adapter = adapter
         binding.appBar.tabLayoutMain.setupWithViewPager(binding.appBar.viewPagerMain)
 
+        binding.appBar.viewPagerMain.addOnPageChangeListener(object :ViewPager.OnPageChangeListener{
+            override fun onPageScrollStateChanged(state: Int) {
+
+            }
+
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+            }
+
+            override fun onPageSelected(position: Int) {
+
+                if(position==1){
+                    binding.appBar.fabMain.show()
+                }else{
+                    binding.appBar.fabMain.hide()
+                }
+
+            }
+
+        })
 
 
 
+
+    }
+
+
+    /**
+     * 点击返回按钮时如果抽屉开着，则关闭之
+     */
+    override fun onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_menu_main_about -> {
+                val aboutIntent = Intent(this, AboutActivity::class.java)
+                startActivity(aboutIntent)
+            }
+            R.id.action_menu_main_my_app -> {
+                val myAppsIntent = Intent(this, MyAppsActivity::class.java)
+                startActivity(myAppsIntent)
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

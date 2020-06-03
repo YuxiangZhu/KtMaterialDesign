@@ -1,8 +1,7 @@
 package com.ly.ktmaterialdesign.base
 
-import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 /**
  * 作者： Alex
@@ -15,4 +14,12 @@ import androidx.appcompat.app.AppCompatActivity
 open class BaseActivity: AppCompatActivity() {
 
 
+    open fun setToolbar(toolbar: Toolbar?) {
+        if (toolbar != null) {
+            setSupportActionBar(toolbar)
+            if (supportActionBar != null) {
+                supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+            }
+        }
+    }
 }
