@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.ly.ktmaterialdesign.databinding.FragmentCardsBinding
+import com.ly.ktmaterialdesign.databinding.FragmentDialogsBinding
 
 /**
  * 作者： Alex
@@ -15,7 +15,7 @@ import com.ly.ktmaterialdesign.databinding.FragmentCardsBinding
  * ----------------------------------------------------------------
  *
  */
-class CardsFragment : Fragment() {
+class DialogsFragment: Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,9 +23,8 @@ class CardsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-       val binding = FragmentCardsBinding.inflate(inflater)
 
-
+        val binding = FragmentDialogsBinding.inflate(inflater)
         return binding.root
     }
 

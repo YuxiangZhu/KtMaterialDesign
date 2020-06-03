@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.adapters.TextViewBindingAdapter.setText
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
@@ -12,6 +13,8 @@ import com.ly.ktmaterialdesign.adapter.FragmentAdapter
 import com.ly.ktmaterialdesign.base.BaseActivity
 import com.ly.ktmaterialdesign.databinding.ActivityMainBinding
 import com.ly.ktmaterialdesign.fragment.CardsFragment
+import com.ly.ktmaterialdesign.fragment.DialogsFragment
+import com.ly.ktmaterialdesign.fragment.WidgetsFragment
 import java.util.*
 
 /**
@@ -61,8 +64,8 @@ class MainActivity : BaseActivity() {
         val fragments: MutableList<Fragment> =
             ArrayList()
         fragments.add(CardsFragment())
-        fragments.add(CardsFragment())
-        fragments.add(CardsFragment())
+        fragments.add(DialogsFragment())
+        fragments.add(WidgetsFragment())
 
         val adapter = FragmentAdapter(supportFragmentManager,fragments,titles)
         binding.appBar.viewPagerMain.adapter = adapter
