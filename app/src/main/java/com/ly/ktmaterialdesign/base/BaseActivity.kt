@@ -1,5 +1,7 @@
 package com.ly.ktmaterialdesign.base
 
+import android.R
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
@@ -21,5 +23,13 @@ open class BaseActivity: AppCompatActivity() {
                 supportActionBar!!.setDisplayHomeAsUpEnabled(true)
             }
         }
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.home) {
+            onBackPressed()
+        }
+        return true
     }
 }

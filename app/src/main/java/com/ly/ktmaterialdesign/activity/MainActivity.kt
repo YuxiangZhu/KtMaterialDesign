@@ -10,7 +10,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import com.blankj.utilcode.util.ActivityUtils
-import com.blankj.utilcode.util.LogUtils
 import com.google.android.material.navigation.NavigationView
 import com.ly.ktmaterialdesign.R
 import com.ly.ktmaterialdesign.adapter.FragmentAdapter
