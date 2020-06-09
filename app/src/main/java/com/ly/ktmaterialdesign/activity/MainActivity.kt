@@ -63,6 +63,17 @@ class MainActivity : BaseActivity() {
                     ActivityUtils.startActivity(BottomNavigationActivity::class.java)
                 }
 
+                R.id.nav_bottom_appbar ->{
+                    ActivityUtils.startActivity(BottomAppBarActivity::class.java)
+                }
+                R.id.nav_about ->{
+                    ActivityUtils.startActivity(AboutActivity::class.java)
+                }
+
+                R.id.nav_my_apps ->{
+                    ActivityUtils.startActivity(MyAppsActivity::class.java)
+                }
+
             }
 
             true
