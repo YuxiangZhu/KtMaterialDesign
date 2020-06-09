@@ -54,10 +54,13 @@ class MainActivity : BaseActivity() {
 
             when(it.itemId){
                 R.id.nav_recycler_and_swipe_refresh ->{
-
-
                     ActivityUtils.startActivity(RecyclerViewActivity::class.java)
-
+                }
+                R.id.nav_scrolling ->{
+                    ActivityUtils.startActivity(ScrollingActivity::class.java)
+                }
+                R.id.nav_bottom_navigation ->{
+                    ActivityUtils.startActivity(BottomNavigationActivity::class.java)
                 }
 
             }
